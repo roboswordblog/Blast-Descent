@@ -1,24 +1,42 @@
 from particles import *
 import pygame
-
+import math
+balloons = 3
 class Balloon:
-    def __init__(self, type, num, player):
+    def __init__(self, type,num, player):
         self.type = type
+        self.player = player
         self.num = num
-        self.x = player.x
-        self.y = player.y
-        self.image = pygame.image.load(f"assets/balloons/{self.type}.png")
+        self.image = pygame.transform.rotate(pygame.image.load(f"assets/balloons/{self.type}.png"), (num*30)-30)
         self.rect = self.image.get_rect()
+        self.dead = False
 
     def draw(self, window):
-        pass
+        if self.dead:
+            return
+        base_image = pygame.image.load(f"assets/balloons/{self.type}.png")
+        wobble = math.sin(pygame.time.get_ticks() * 0.005 + self.num) * 3
+        angle = (self.num * 30) - 30 + wobble
+
+        image = pygame.transform.rotate(base_image, angle)
+
+        rect = image.get_rect(center=self.rect.center)
+
+        window.blit(image, rect)
 
     def update(self, bulletList):
+        if self.dead:
+            return
+        global balloons
+        self.rect.x = self.player.x
+        self.rect.y = self.player.y + 10
         for bullet in bulletList:
             if self.rect.colliderect(bullet.rect):
                 if bullet.type == "enemy":
                     for i in range(10):
-                        Particle(100, 100, (180, 180, 180))
+                        Particle(self.rect.x, self.rect.y, (180, 180, 180))
+                        balloons -= 1
+                        self.dead = True
 
 
 class Player:
@@ -33,6 +51,7 @@ class Player:
         # reload time should be 4 seconds
         self.image = pygame.image.load(f"images/player.{self.mode}.png")
         self.rect = self.image.get_rect()
+        self.balloon1 = Balloon("0", )
 
     def update(self):
         self.rect.x = self.x
