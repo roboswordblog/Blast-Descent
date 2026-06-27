@@ -11,10 +11,9 @@ class Balloon:
 
         self.base_image = pygame.image.load(f"assets/balloons/{self.type}.png")
         self.rect = self.base_image.get_rect()
-
+        self.wobble_angle = 0
+        self.wobble_velocity = 0
         self.dead = False
-
-        # IMPORTANT: initialize position immediately
         self.rect.midbottom = self.player.rect.midtop
         self.rect.y -= (self.num * 12)
 
@@ -22,8 +21,13 @@ class Balloon:
         if self.dead:
             return
 
-        wobble = math.sin(pygame.time.get_ticks() * 0.005 + self.num) * 3
-        angle = 0 + wobble
+        target = math.sin(pygame.time.get_ticks() * 0.002 + self.num) * 6
+
+        self.wobble_velocity += (target - self.wobble_angle) * 0.05
+        self.wobble_velocity *= 0.85
+        self.wobble_angle += self.wobble_velocity
+
+        angle = self.wobble_angle
 
         image = pygame.transform.rotate(self.base_image, angle)
 
