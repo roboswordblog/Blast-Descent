@@ -73,8 +73,8 @@ class Player:
         self.rect.x = self.x
         self.rect.y = self.y
         self.imageDict = {
-            "idle": pygame.transform.scale(pygame.image.load(f"assets/player/idle.png"), (64, 48)),
-            "reload": pygame.transform.scale(pygame.image.load(f"assets/player/reload.png"), (64, 48))
+            "idle": pygame.transform.scale(pygame.image.load(f"assets/player/idle.png"), (60, 48)),
+            "reload": pygame.transform.scale(pygame.image.load(f"assets/player/reload.png"), (60, 48))
         }
         self.last_x = self.x
         self.vel_x = 0
