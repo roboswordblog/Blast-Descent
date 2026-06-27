@@ -50,7 +50,7 @@ class Balloon:
             if self.rect.colliderect(bullet.rect):
                 if bullet.type == "enemy":
                     for i in range(10):
-                        Particle(self.rect.centerx, self.rect.centery, (200, 200, 200))
+                        Particle(self.rect.centerx, self.rect.centery, (210, 210, 210))
 
                     self.dead = True
 
@@ -82,6 +82,7 @@ class Player:
         self.jumpBoostCooldown = 0
 
     def update(self):
+        self.ay -= 0.05 * balloons
         self.rect.x = self.x
         self.rect.y = self.y
 
@@ -103,11 +104,13 @@ class Player:
             self.dir = 0
 
         elif keys[pygame.K_UP] or keys[pygame.K_w]:
-            if self.jumpBoostCooldown < 0:
-                for i in range(5):
-                    Particle(self.rect.centerx-100, self.rect.centery-100, (200, 200, 200))
+            if self.jumpBoostCooldown <= 0:
+                for i in range(10):
+                    Particle(self.rect.centerx, self.rect.centery, (200, 200, 200))
                 self.ay -= 10
-                self.jumpBoostCooldown = 50
+                self.jumpBoostCooldown = 100
+
+        self.jumpBoostCooldown -= 0.5
 
     def draw(self, window):
         self.image = pygame.transform.flip(self.imageDict[self.mode], self.dir, False)

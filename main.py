@@ -13,6 +13,8 @@ class States:
     def __init__(self):
         pass
 player = Player(500, 200)
+clock = pygame.time.Clock()
+
 while True:
     window.fill((200, 220, 226))
     for particle in particleList:
@@ -24,4 +26,5 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             quit()
+    clock.tick(60)
     pygame.display.update()
