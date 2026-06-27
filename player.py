@@ -96,20 +96,23 @@ class Player:
         self.balloon3.update()
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT] or keys[pygame.K_a]:
-            self.x -= 1
+            self.x -= 0.1
+            self.dir = 1
         elif keys[pygame.K_RIGHT] or keys[pygame.K_d]:
-            self.x += 1
+            self.x += 0.1
+            self.dir = 0
 
         elif keys[pygame.K_UP] or keys[pygame.K_w]:
             if self.jumpBoostCooldown < 0:
                 for i in range(5):
-                    Particle(self.rect.centerx, self.rect.centery, (200, 200, 200))
+                    Particle(self.rect.centerx-100, self.rect.centery-100, (200, 200, 200))
                 self.ay -= 10
                 self.jumpBoostCooldown = 50
 
     def draw(self, window):
-        self.image = self.imageDict[self.mode]
+        self.image = pygame.transform.flip(self.imageDict[self.mode], self.dir, False)
         self.balloon1.draw(window)
         self.balloon2.draw(window)
         self.balloon3.draw(window)
+
         window.blit(self.image, self.rect)
