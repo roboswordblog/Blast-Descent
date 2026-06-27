@@ -1,6 +1,7 @@
 from particles import *
 import pygame
 import math
+from bullets import *
 balloons = 3
 class Balloon:
     def __init__(self, type,num, player):
@@ -24,7 +25,7 @@ class Balloon:
 
         window.blit(image, rect)
 
-    def update(self, bulletList):
+    def update(self):
         if self.dead:
             return
         global balloons
@@ -51,13 +52,17 @@ class Player:
         # reload time should be 4 seconds
         self.image = pygame.image.load(f"images/player.{self.mode}.png")
         self.rect = self.image.get_rect()
-        self.balloon1 = Balloon("0", )
+        self.balloon1 = Balloon("0", 0, self)
+        self.balloon2 = Balloon("1", 1, self)
+        self.balloon3 = Balloon("2", 2, self)
 
     def update(self):
         self.rect.x = self.x
         self.rect.y = self.y
         if self.ammo < 0:
             self.mode = "reload"
+        self.balloon1.update()
+        self.balloon2.update()
 
 
     def draw(self, window):
