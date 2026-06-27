@@ -1,5 +1,21 @@
 import pygame
 
+class Balloon:
+    def __init__(self, type, num, player):
+        self.type = type
+        self.num = num
+        self.x = player.x
+        self.y = player.y
+        self.image = pygame.image.load(f"assets/balloons/{self.type}.png")
+        self.rect = self.image.get_rect()
+
+    def draw(self, window):
+        pass
+
+    def update(self):
+        pass
+
+
 class Player:
     def __init__(self, x, y):
         self.x = x
