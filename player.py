@@ -44,6 +44,7 @@ class Player:
     def __init__(self, x, y):
         self.x = x
         self.y = y
+        self.ay = 0
         self.mode = "idle"
         self.ammo = 25
         self.health = 100
