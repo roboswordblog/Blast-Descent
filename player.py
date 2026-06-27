@@ -12,8 +12,11 @@ class Balloon:
     def draw(self, window):
         pass
 
-    def update(self):
-        pass
+    def update(self, bulletList):
+        for bullet in bulletList:
+            if self.rect.colliderect(bullet.rect):
+                if bullet.type == "enemy":
+                    pass
 
 
 class Player:
