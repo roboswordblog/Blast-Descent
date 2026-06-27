@@ -14,14 +14,16 @@ class States:
         pass
 player = Player(500, 200)
 clock = pygame.time.Clock()
-
+for i in range(100):
+    Particle(500, 200, (255,255,255))
 while True:
     window.fill((200, 220, 226))
+
+    player.draw(window)
+    player.update()
     for particle in particleList:
         particle.draw(window)
         particle.update()
-    player.draw(window)
-    player.update()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
