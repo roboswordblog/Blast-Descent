@@ -1,3 +1,4 @@
+from particles import *
 import pygame
 
 class Balloon:
@@ -16,7 +17,8 @@ class Balloon:
         for bullet in bulletList:
             if self.rect.colliderect(bullet.rect):
                 if bullet.type == "enemy":
-                    pass
+                    for i in range(10):
+                        Particle(100, 100, (180, 180, 180))
 
 
 class Player:
