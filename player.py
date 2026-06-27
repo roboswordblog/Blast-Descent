@@ -21,10 +21,12 @@ class Balloon:
         if self.dead:
             return
 
-        target = math.sin(pygame.time.get_ticks() * 0.002 + self.num) * 6
+        speed = self.player.vel_x
 
-        self.wobble_velocity += (target - self.wobble_angle) * 0.05
-        self.wobble_velocity *= 0.85
+        target_angle = -speed * 2  # tilt opposite movement
+
+        self.wobble_velocity += (target_angle - self.wobble_angle) * 0.1
+        self.wobble_velocity *= 0.8
         self.wobble_angle += self.wobble_velocity
 
         angle = self.wobble_angle
@@ -74,12 +76,19 @@ class Player:
             "idle": pygame.transform.scale(pygame.image.load(f"assets/player/idle.png"), (64, 48)),
             "reload": pygame.transform.scale(pygame.image.load(f"assets/player/reload.png"), (64, 48))
         }
+        self.last_x = self.x
+        self.vel_x = 0
 
     def update(self):
         self.rect.x = self.x
         self.rect.y = self.y
+
+        self.vel_x = self.x - self.last_x
+        self.last_x = self.x
+
         if self.ammo < 0:
             self.mode = "reload"
+
         self.balloon1.update()
         self.balloon2.update()
         self.balloon3.update()
