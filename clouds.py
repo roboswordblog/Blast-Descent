@@ -11,5 +11,6 @@ class Cloud:
     def update(self):
         self.x -= 1
 
+
     def draw(self, window):
         window.blit(self.image, (self.x, self.y))

@@ -16,6 +16,7 @@ player = Player(500, 200)
 clock = pygame.time.Clock()
 for i in range(100):
     Particle(500, 200, (255,255,255))
+
 while True:
     window.fill((200, 220, 226))
 
