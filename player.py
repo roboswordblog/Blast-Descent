@@ -82,7 +82,10 @@ class Player:
         self.jumpBoostCooldown = 0
 
     def update(self):
-        self.ay -= 0.05 * balloons
+        self.ay -= 0.005 * (4-balloons)
+        self.ay *= 0.985
+        if self.ay < -2:
+            self.ay = -2
         self.rect.x = self.x
         self.rect.y = self.y
 
@@ -107,7 +110,7 @@ class Player:
             if self.jumpBoostCooldown <= 0:
                 for i in range(10):
                     Particle(self.rect.centerx, self.rect.centery, (200, 200, 200))
-                self.ay -= 10
+                self.ay += 1
                 self.jumpBoostCooldown = 100
 
         self.jumpBoostCooldown -= 0.5

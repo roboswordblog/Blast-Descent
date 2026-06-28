@@ -3,6 +3,7 @@ from player import *
 from bullets import *
 from enemy import *
 from ui import *
+from clouds import *
 import pygame
 pygame.init()
 
@@ -14,12 +15,14 @@ class States:
         pass
 player = Player(500, 200)
 clock = pygame.time.Clock()
-for i in range(100):
-    Particle(500, 200, (255,255,255))
-
+for i in range(200):
+    Particle(525, 200, (255,255,255))
+cloudList.append(Cloud(100, 100))
 while True:
     window.fill((200, 220, 226))
-
+    for cloud in cloudList:
+        cloud.draw(window)
+        cloud.update(player)
     player.draw(window)
     player.update()
     for particle in particleList:

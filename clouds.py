@@ -8,8 +8,9 @@ class Cloud:
         self.y = y
         self.image = pygame.image.load(f"assets/clouds/{random.choice([0,1])}.png")
 
-    def update(self):
-        self.x -= 1
+    def update(self, player):
+        self.x += 0.5
+        self.y += player.ay
 
 
     def draw(self, window):
