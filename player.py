@@ -110,7 +110,7 @@ class Player:
             if self.jumpBoostCooldown <= 0:
                 for i in range(10):
                     Particle(self.rect.centerx, self.rect.centery, (200, 200, 200))
-                self.ay += 1
+                self.ay += 5
                 self.jumpBoostCooldown = 100
 
         self.jumpBoostCooldown -= 0.5

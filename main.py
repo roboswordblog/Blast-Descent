@@ -20,14 +20,17 @@ for i in range(200):
 cloudList.append(Cloud(100, 100))
 while True:
     window.fill((200, 220, 226))
-    for cloud in cloudList:
-        cloud.draw(window)
-        cloud.update(player)
+
     player.draw(window)
     player.update()
+
     for particle in particleList:
         particle.draw(window)
         particle.update()
+
+    for cloud in cloudList:
+        cloud.draw(window)
+        cloud.update(player)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
