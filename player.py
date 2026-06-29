@@ -111,7 +111,7 @@ class Player:
                 self.jumpBoostCooldown = 100
         if keys[pygame.K_SPACE]:
             if self.firingCooldown <= 0:
-                Bullet(self.rect.centerx+self.dir*50, self.rect.centery, self.dir, "player")
+                Bullet(self.rect.centerx-self.dir*50, self.rect.centery, self.dir, "player")
                 self.firingCooldown = 50
         self.jumpBoostCooldown -= 0.5
         self.firingCooldown -= 0.5
