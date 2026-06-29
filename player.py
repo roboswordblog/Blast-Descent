@@ -100,10 +100,10 @@ class Player:
         self.balloon3.update()
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT] or keys[pygame.K_a]:
-            self.x -= 0.1
+            self.x -= 1
             self.dir = 1
         elif keys[pygame.K_RIGHT] or keys[pygame.K_d]:
-            self.x += 0.1
+            self.x += 1
             self.dir = 0
 
         elif keys[pygame.K_UP] or keys[pygame.K_w]:

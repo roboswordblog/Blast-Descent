@@ -13,6 +13,7 @@ pygame.display.set_caption("Sky Fighter")
 class States:
     def __init__(self):
         pass
+
 player = Player(500, 200)
 clock = pygame.time.Clock()
 for i in range(200):
