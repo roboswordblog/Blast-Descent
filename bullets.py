@@ -17,12 +17,12 @@ class Bullet:
         bulletList.append(self)
 
     def update(self):
-        self.x -= self.dir*2
+        self.x -= self.dir*1.5
         self.timer -= 0.5
         self.rect.x = self.x
         self.rect.y = self.y
         if self.timer <= 0:
-            for i in range(100):
+            for i in range(int(abs(self.timer)/ 3)):
                 Particle(
                     self.x,
                     self.y,
