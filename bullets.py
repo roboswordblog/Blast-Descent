@@ -17,7 +17,7 @@ class Bullet:
         bulletList.append(self)
 
     def update(self):
-        self.x -= self.dir
+        self.x -= self.dir*2.5
         self.timer -= 1
         self.rect.x = self.x
         self.rect.y = self.y
