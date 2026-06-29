@@ -1,6 +1,5 @@
 from particles import *
 import pygame
-import math
 from bullets import *
 balloons = 3
 class Balloon:
