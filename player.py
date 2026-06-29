@@ -1,5 +1,3 @@
-from particles import *
-import pygame
 from bullets import *
 balloons = 3
 class Balloon:
@@ -105,14 +103,17 @@ class Player:
             self.x += 1
             self.dir = 0
 
-        elif keys[pygame.K_UP] or keys[pygame.K_w]:
+        if keys[pygame.K_UP] or keys[pygame.K_w]:
             if self.jumpBoostCooldown <= 0:
                 for i in range(10):
                     Particle(self.rect.centerx, self.rect.centery, (200, 200, 200))
                 self.ay += 5
                 self.jumpBoostCooldown = 100
-
+        if keys[pygame.K_SPACE]:
+            if self.firingCooldown <= 0:
+                Bullet(self.rect.centerx+self.dir*50, self.rect.centery, self.dir, "player")
         self.jumpBoostCooldown -= 0.5
+        self.firingCooldown -= 0.5
 
     def draw(self, window):
         self.image = pygame.transform.flip(self.imageDict[self.mode], self.dir, False)
