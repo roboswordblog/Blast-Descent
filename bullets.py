@@ -18,7 +18,7 @@ class Bullet:
 
     def update(self):
         self.x -= self.dir*2
-        self.timer -= 1
+        self.timer -= 0.5
         self.rect.x = self.x
         self.rect.y = self.y
         if self.timer <= 0:
