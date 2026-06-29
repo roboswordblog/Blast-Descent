@@ -19,6 +19,8 @@ class Bullet:
     def update(self):
         self.x -= self.dir
         self.timer -= 1
+        self.rect.x = self.x
+        self.rect.y = self.y
         if self.timer <= 0:
             for i in range(50):
                 Particle(
@@ -35,4 +37,6 @@ class Bullet:
                 )
 
     def draw(self, window):
+        if self.timer <= 0:
+            return
         window.blit(self.image, self.rect)

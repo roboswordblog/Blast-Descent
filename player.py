@@ -45,7 +45,7 @@ class Balloon:
 
         for bullet in bulletList:
             if self.rect.colliderect(bullet.rect):
-                if bullet.type == "enemy":
+                if bullet.tag == "enemy":
                     for i in range(10):
                         Particle(self.rect.centerx, self.rect.centery, (210, 210, 210))
 

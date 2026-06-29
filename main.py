@@ -29,9 +29,16 @@ while True:
         particle.draw(window)
         particle.update()
 
+    for bullet in bulletList:
+        bullet.draw(window)
+        bullet.update()
+        bullet.y += player.ay
+
+
     for cloud in cloudList:
         cloud.draw(window)
         cloud.update(player)
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
