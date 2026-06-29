@@ -22,7 +22,7 @@ class Bullet:
         self.rect.x = self.x
         self.rect.y = self.y
         if self.timer <= 0:
-            for i in range(50):
+            for i in range(5):
                 Particle(
                     self.x,
                     self.y,
