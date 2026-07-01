@@ -10,7 +10,7 @@ class Particle:
             random.uniform(-2, 2),
             random.uniform(-2, 2)
         ]
-        self.particleTimer = 200
+        self.particleTimer = 75
         particleList.append(self)
         self.vel[0] *= 0.97
         self.vel[1] *= 0.97
