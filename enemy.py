@@ -5,4 +5,5 @@ class Enemy:
         self.x = x
         self.y = y
         self.dir = 1
+    
 
